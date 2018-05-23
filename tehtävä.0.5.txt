@@ -1,0 +1,28 @@
+kayttaja->selain:
+note left of selain
+ kayttaja kirjottaa osoiteriville
+ fullstack-exampleapp.herokuapp.com/spa
+end note
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/spa
+note left of palvelin
+  muodostetaan sivun HTML-koodi palautettavaksi, mukana
+  on linkit tyylisivuun ja javascriptiin.
+  Muistiinpanoja ei vielä ole.
+end note
+palvelin->selain: status 200, sivun HTML-koodi
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/main.css
+palvelin->selain: status 200, tyylisivu
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/spa.js
+palvelin->selain: status 200, javascript
+note right of selain
+ selain rekisteröi takaisinkutsufunktion ja avaa xhttp-yhteyden.
+end note
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/data.json
+note left of palvelin
+  muodostetaan json-muotoinen data jossa on tallennetut muistiinpanot.
+end note
+palvelin->selain: status 200, json-muodossa olevat muistiinpanot.
+note left of selain
+ selain muokkaa palvelimen palauttamasta json-datasta näytettävän
+ sivun. Json-datassa on tallennetut muistiinpanot.
+end note

@@ -1,0 +1,20 @@
+kayttaja->selain:
+note left of selain
+ kayttaja kirjottaa input-kenttään muistiinpanon ja painaa
+ talleta-nappulaa
+end note
+note right of selain
+ selain muodostaa Json-muotoisen sisällön input-kentästä, jonka
+ lähettää palvelimelle
+end note
+selain->palvelin: POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+note left of palvelin
+  muodostetaan sivun HTML-koodi palautettavaksi, mukana
+  on linkit tyylisivuun ja javascriptiin.
+  Muistiinpanoja ei vielä ole.
+end note
+palvelin->selain: status 201 Created, {"message":"note created"}
+note left of selain
+ selain lisää DOM-puuhun listaan viimeisen muistiinpanon
+ paikallisesti ja näyttää sen.
+end note

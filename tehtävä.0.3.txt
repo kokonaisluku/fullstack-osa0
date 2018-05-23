@@ -1,0 +1,32 @@
+Kaavion kulku voi olla erilainen riippuen siitä kutsutaanko sivua
+GET- vai POST-metodilla. Tässä tapauksessa kyseessä on
+GET-metodilla tehty kutsu (esim. uudelleenohjauksen seurauksena).
+
+kayttaja->selain:
+note left of selain
+kayttaja kirjottaa osoiteriville
+https://fullstack-exampleapp.herokuapp.com/notes
+end note
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/notes
+note left of palvelin
+  muodostetaan sivun HTML-koodi palautettavaksi, mukana
+  on linkit tyylisivuun ja javascriptiin.
+  Muistiinpanoja ei vielä ole.
+end note
+palvelin->selain: status 200, sivun HTML-koodi
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/main.css
+palvelin->selain: status 200, tyylisivu
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/main.js
+palvelin->selain: status 200, javascript
+note right of selain
+ selain rekisteröi takaisinkutsufunktion ja avaa xhttp-yhteyden.
+end note
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/data.json
+note left of palvelin
+  muodostetaan json-muotoinen data jossa on tallennetut muistiinpanot.
+end note
+palvelin->selain: status 200, json-muodossa olevat muistiinpanot.
+note left of selain
+ selain näyttää palvelimen palauttaman HTML:n
+ johon on upotettu palvelimelta haetut muistiinpanot
+end note
